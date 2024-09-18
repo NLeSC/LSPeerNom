@@ -1,0 +1,55 @@
+<p>Hello {TOKEN:FIRSTNAME} {TOKEN:LASTNAME}, please choose a name.</p>
+
+<p>This question has three subquestions which are different for different users.</p>
+<script>
+  s = "{TOKEN:ATTRIBUTE_1}"
+  students = s.split(',')
+  console.log(s, students)
+
+  function duplicateElement(refElement) {
+    console.log("refElement", refElement)
+    var elementClone = refElement.cloneNode(true);
+    var duplicate = refElement.parentNode.insertBefore(elementClone, refElement.nextSibling);
+    return duplicate
+  }
+
+
+  function addNamedItem(name, itemId, refElement, baseId){
+    console.log("addNamedItem arguments:", name, itemId, refElement, baseId)
+    
+	var newElement = duplicateElement(refElement);
+    newElement.id = baseId.concat(itemId);
+    console.log("new element", newElement);
+    
+    var button = newElement.querySelector("div");
+    console.log("button", button);
+    
+    var label = button.querySelector("label");
+    console.log("label", label);
+    label.textContent=name;
+    
+  }
+  
+  function generateItemsFromStudents(students){
+    var refElement = document.querySelector("label").parentElement.parentElement;
+    var baseId = refElement.id.replace(/SQ([0-9])*/g, "SQ");
+    console.log("I selected this refElement:", refElement);
+    
+    //students.forEach(addNamedItem);
+    for (let i = 0; i < students.length; i++) {
+      var itemId = i.toString().padStart(2,"0")
+      addNamedItem(students[i], itemId, refElement, baseId);
+    }
+    
+    refElement.remove()
+  }
+  
+  window.addEventListener(
+    "load", 
+    () => {
+      // document.querySelectorAll("label").forEach((e, i)=>e.textContent=students[i])
+      console.log(students)
+      generateItemsFromStudents(students)
+    }
+  )
+</script>
