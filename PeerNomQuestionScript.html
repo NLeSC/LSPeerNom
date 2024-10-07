@@ -1,55 +1,26 @@
-<p>Hello {TOKEN:FIRSTNAME} {TOKEN:LASTNAME}, please choose a name.</p>
-
-<p>This question has three subquestions which are different for different users.</p>
 <script>
   s = "{TOKEN:ATTRIBUTE_1}"
+  console.log(s)
   students = s.split(',')
-  console.log(s, students)
+  window.addEventListener("load", () => {
+      document.querySelectorAll("label").forEach((e, i)=>e.textContent=students[i])
+  })
 
-  function duplicateElement(refElement) {
-    console.log("refElement", refElement)
-    var elementClone = refElement.cloneNode(true);
-    var duplicate = refElement.parentNode.insertBefore(elementClone, refElement.nextSibling);
-    return duplicate
-  }
+</script>
 
-
-  function addNamedItem(name, itemId, refElement, baseId){
-    console.log("addNamedItem arguments:", name, itemId, refElement, baseId)
-    
-	var newElement = duplicateElement(refElement);
-    newElement.id = baseId.concat(itemId);
-    console.log("new element", newElement);
-    
-    var button = newElement.querySelector("div");
-    console.log("button", button);
-    
-    var label = button.querySelector("label");
-    console.log("label", label);
-    label.textContent=name;
-    
-  }
-  
-  function generateItemsFromStudents(students){
-    var refElement = document.querySelector("label").parentElement.parentElement;
-    var baseId = refElement.id.replace(/SQ([0-9])*/g, "SQ");
-    console.log("I selected this refElement:", refElement);
-    
-    //students.forEach(addNamedItem);
-    for (let i = 0; i < students.length; i++) {
-      var itemId = i.toString().padStart(2,"0")
-      addNamedItem(students[i], itemId, refElement, baseId);
+<script type="text/javascript" data-author="Tony Partner">
+  $(document).on('ready pjax:scriptcomplete',function(){
+ 
+    // Define some text strings
+    var originalModalText = "One or more mandatory questions have not been answered. If possible, please complete them before continuing to the next page.";
+    var newModalText = "Je hebt niemand geselecteerd, we zouden het fijn vinden als je de vraag toch beantwoord. ";
+ 
+    // Modify the modal text
+    var modalBody = $('.modal-body p').filter(function() {
+      return $.trim($(this).text()) == originalModalText;
+    });
+    if(modalBody.length > 0) {
+      modalBody.text(newModalText);
     }
-    
-    refElement.remove()
-  }
-  
-  window.addEventListener(
-    "load", 
-    () => {
-      // document.querySelectorAll("label").forEach((e, i)=>e.textContent=students[i])
-      console.log(students)
-      generateItemsFromStudents(students)
-    }
-  )
+  });
 </script>
