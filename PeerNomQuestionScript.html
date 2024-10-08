@@ -1,9 +1,19 @@
 <script>
   s = "{TOKEN:ATTRIBUTE_1}"
-  console.log(s)
+  
+  console.log("this is variable s (TOKEN:ATTRIBUTE_1)", s);
+  console.log("the type of s is: ", typeof s)
+  
+  if (s == "<span class='em-expression em-haveerror'  ><span class='em-error' title=' ' ><span title='Undefined variable' class='em-var em-var-error' >TOKEN:ATTRIBUTE_1</span></span></span>") {
+    console.log("TOKEN:ATTRIBUTE_1 is not available, probably because you are running in preview mode. Using avian backup students...")
+    s = "Kwik,Kwek,Kwak"
+  } 
+  
   students = s.split(',')
+  console.log("students are:", students)
+  
   window.addEventListener("load", () => {
-      document.querySelectorAll("label").forEach((e, i)=>e.textContent=students[i])
+      document.querySelectorAll(".bootstrap-buttons-div > div > label").forEach((e, i)=>e.textContent=students[i])
   })
 
 </script>
@@ -11,11 +21,9 @@
 <script type="text/javascript" data-author="Tony Partner">
   $(document).on('ready pjax:scriptcomplete',function(){
  
-    // Define some text strings
     var originalModalText = "One or more mandatory questions have not been answered. If possible, please complete them before continuing to the next page.";
     var newModalText = "Je hebt niemand geselecteerd, we zouden het fijn vinden als je de vraag toch beantwoord. ";
  
-    // Modify the modal text
     var modalBody = $('.modal-body p').filter(function() {
       return $.trim($(this).text()) == originalModalText;
     });
