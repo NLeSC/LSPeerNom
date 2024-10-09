@@ -1,0 +1,51 @@
+<script>
+  // This script prepares advanced ranking question (v6.6.5) or normal ranking question type in v5.2.3 for peer ranking.
+  // It fills in classmates from the participants token list into the predefined buttons and removes excess buttons. 
+
+  classmate_string = "{TOKEN:ATTRIBUTE_1}"
+  
+  // Use dummy names in case the TOKEN_ATTRIBUTE is not available
+  if (
+    classmate_string == "<span class='em-expression em-haveerror'  >"
+    +"<span class='em-error' title=' ' ><span title='Undefined variable' class='em-var em-var-error' >"
+      +"TOKEN:ATTRIBUTE_1</span></span></span>"
+    ) 
+    {
+    console.log("TOKEN:ATTRIBUTE_1 is not available, probably because you are running in preview mode. " 
+    + "Using avian backup students...")
+    classmate_string = "Kwik,Kwek,Kwak"
+  } 
+  
+  classmates = classmate_string.split(',')
+  console.log("students are:", classmates)
+  
+  window.addEventListener("load", () => {
+    // Remove excessive buttons
+    [...document.querySelectorAll("li.ls-choice")]
+    .filter( e => e.id.replace("javatbd" + "{SID}X{GID}X{QID}", "") > classmates.length)
+    .forEach(e => e.remove());
+    
+    // Replace the placeholder labels with classmate names from the token list attribute
+    document.querySelectorAll("li.ls-choice").forEach(e => e.textContent=classmates[e.getAttribute("data-value") - 1]);
+
+
+
+  })
+</script>
+
+<script type="text/javascript">
+  // This script changes the original modal question text to a custom modal question text. 
+
+  $(document).on('ready pjax:scriptcomplete',function(){
+ 
+    var originalModalText = "One or more mandatory questions have not been answered. If possible, please complete them before continuing to the next page.";
+    var newModalText = "Je hebt niemand geselecteerd, we zouden het fijn vinden als je de vraag toch beantwoord. ";
+ 
+    var modalBody = $('.modal-body p').filter(function() {
+      return $.trim($(this).text()) == originalModalText;
+    });
+    if(modalBody.length > 0) {
+      modalBody.text(newModalText);
+    }
+  });
+</script>
