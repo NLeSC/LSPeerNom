@@ -1,24 +1,38 @@
 <script>
-  s = "{TOKEN:ATTRIBUTE_1}"
+  // This script prepares a bootstrap button multiple choice question for peer nomination.
+  // It fills in classmates from the participants token list into the predefined buttons and removes excess buttons. 
+
+  classmate_string = "{TOKEN:ATTRIBUTE_1}"
   
-  console.log("this is variable s (TOKEN:ATTRIBUTE_1)", s);
-  console.log("the type of s is: ", typeof s)
-  
-  if (s == "<span class='em-expression em-haveerror'  ><span class='em-error' title=' ' ><span title='Undefined variable' class='em-var em-var-error' >TOKEN:ATTRIBUTE_1</span></span></span>") {
-    console.log("TOKEN:ATTRIBUTE_1 is not available, probably because you are running in preview mode. Using avian backup students...")
-    s = "Kwik,Kwek,Kwak"
+  // Use dummy names in case the TOKEN_ATTRIBUTE is not available
+  if (
+    classmate_string == "<span class='em-expression em-haveerror'  >"
+    +"<span class='em-error' title=' ' ><span title='Undefined variable' class='em-var em-var-error' >"
+      +"TOKEN:ATTRIBUTE_1</span></span></span>"
+    ) 
+    {
+    console.log("TOKEN:ATTRIBUTE_1 is not available, probably because you are running in preview mode. " 
+    + "Using avian backup students...")
+    classmate_string = "Kwik,Kwek,Kwak"
   } 
   
-  students = s.split(',')
-  console.log("students are:", students)
+  classmates = classmate_string.split(',')
+  console.log("students are:", classmates)
   
   window.addEventListener("load", () => {
-      document.querySelectorAll(".bootstrap-buttons-div > div > label").forEach((e, i)=>e.textContent=students[i])
+    // Remove excessive buttons
+    [...document.querySelectorAll(".bootstrap-buttons-div")]
+    .filter( e => e.id.replace("javatbd" + "{SID}X{GID}X{QID}", "") > classmates.length)
+    .forEach(e => e.remove());
+    
+    // Replace the placeholder labels with classmate names from the token list attribute
+    document.querySelectorAll(".bootstrap-buttons-div > div > label").forEach((e, i)=>e.textContent=classmates[i]);
   })
-
 </script>
 
-<script type="text/javascript" data-author="Tony Partner">
+<script type="text/javascript">
+  // This script changes the original modal question text to a custom modal question text. 
+
   $(document).on('ready pjax:scriptcomplete',function(){
  
     var originalModalText = "One or more mandatory questions have not been answered. If possible, please complete them before continuing to the next page.";
