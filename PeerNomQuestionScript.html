@@ -1,14 +1,19 @@
 <script>
   // This script prepares a bootstrap button multiple choice question for peer nomination.
   // It fills in classmates from the participants token list into the predefined buttons and removes excess buttons. 
+  function recolor_buttons(passive_color, active_color){
+    document.querySelectorAll(".bootstrap-buttons-div > .button-item:not(.active)").forEach(e => e.style.background = passive_color);
+    document.querySelectorAll(".bootstrap-buttons-div > .button-item.active").forEach(e => e.style.background = active_color);
+  };
 
-  classmate_string = "{TOKEN:ATTRIBUTE_1}"
+  var classmate_string = "{TOKEN:ATTRIBUTE_1}"
   
   // Use dummy names in case the TOKEN_ATTRIBUTE is not available
+  console.log(classmate_string, typeof(classmate_string), classmate_string.length)
   if (
     classmate_string == "<span class='em-expression em-haveerror'  >"
     +"<span class='em-error' title=' ' ><span title='Undefined variable' class='em-var em-var-error' >"
-      +"TOKEN:ATTRIBUTE_1</span></span></span>"
+      +"TOKEN:ATTRIBUTE_1</span></span></span>" || classmate_string == "" || classmate_string == "Kwik,Kwek,Kwak"
     ) 
     {
     console.log("TOKEN:ATTRIBUTE_1 is not available, probably because you are running in preview mode. " 
@@ -27,6 +32,12 @@
     
     // Replace the placeholder labels with classmate names from the token list attribute
     document.querySelectorAll(".bootstrap-buttons-div > div > label").forEach((e, i)=>e.textContent=classmates[i]);
+
+    recolor_buttons("#797777", "#e3000b")
+  })
+
+  window.addEventListener("click", () => {
+    recolor_buttons("#797777", "#e3000b")
   })
 </script>
 
