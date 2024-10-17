@@ -1,0 +1,7 @@
+,Unnamed: 0,Grade,attribute_3 <Klas>,Roepnaam,Tussenv,Achternaam,Geboortedatum,Geslacht,token,Mentor,attribute_2 <Permission>,Persoonsgegevens,attribute_1 <Classmates>,language
+0,,1,A1g1,Jaro,,,,,1,Giovanni,no,,"Hubert, Toon, John, Sanyogita, Loes",nl
+1,,1,A1g1,Loes,,,,,2,Giovanni,no,,"John, Sanyogita, Jaro, Hubert, Toon",nl
+2,,1,A1g1,Toon,,,,,3,Giovanni,,,"Hubert, Jaro, John, Loes, Sanyogita",nl
+3,,1,A1g2,Sanyogita,,,,,4,Giovanni,,,"Loes, Hubert, John, Toon, Jaro",nl
+4,,1,A1g2,John,,,,,5,Wilbert,,,"Toon, Jaro, Loes, Hubert, Sanyogita",nl
+5,,1,A1g2,Hubert,,,,,6,Wilbert,,,"Jaro, John, Sanyogita, Loes, Toon",nl
