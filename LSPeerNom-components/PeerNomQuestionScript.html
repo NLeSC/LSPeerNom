@@ -6,6 +6,7 @@
     document.querySelectorAll(".bootstrap-buttons-div > .button-item.active").forEach(e => e.style.background = active_color);
   };
 
+  // It is assumed that the string with randomized classmate names is set as the first custom attribute of the participant's tokenlist 
   var classmate_string = "{TOKEN:ATTRIBUTE_1}"
   
   // Use dummy names in case the TOKEN_ATTRIBUTE is not available
@@ -23,36 +24,34 @@
   classmates = classmate_string.split(',')
   console.log("students are:", classmates)
   
+
   window.addEventListener("load", () => {
     // Remove excessive buttons
     [...document.querySelectorAll(".bootstrap-buttons-div")]
     .filter( e => e.id.replace("javatbd" + "{SID}X{GID}X{QID}", "") > classmates.length)
     .forEach(e => e.remove());
     
-    // Replace the placeholder labels with classmate names from the token list attribute
+    // Replace the placeholder labels with classmate names from the token list attribute and recolor buttons
     document.querySelectorAll(".bootstrap-buttons-div > div > label").forEach((e, i)=>e.textContent=classmates[i]);
-
     recolor_buttons("#797777", "#e3000b")
+
+    // Replace default texts    
+    // Replace mandatory-soft message text and buttons
+    var newModalText = "Je hebt niemand gekozen. Probeer de vraag toch te beantwoorden, ook als je niet zeker weet of je keuzes kloppen. ";
+    var newMoveNextButton = "Ik weet niemand om te kiezen"
+    var newDismissButton = "Vraag toch beantwoorden"
+    $('.modal-body p:first').text(newModalText);
+    $('.modal-body p:not(:first)').remove();
+    $('.modal-footer a[data-movenext="movenext"]').text(newMoveNextButton);
+    $('.modal-footer a[data-dismiss="modal"]').text(newDismissButton);
+
+    // Remove mandatory tips/alerts, which show up after the mandatory-soft message window
+    $('div.ls-question-mandatory').remove();
+    $('div.ls-question-message.ls-em-tip.em_num_answers').remove();
   })
 
-  window.addEventListener("click", () => {
+  // Buttons need to be recolored after every drag event 
+  window.addEventListener("click", () => { 
     recolor_buttons("#797777", "#e3000b")
   })
-</script>
-
-<script type="text/javascript">
-  // This script changes the original modal question text to a custom modal question text. 
-
-  $(document).on('ready pjax:scriptcomplete',function(){
- 
-    var originalModalText = "One or more mandatory questions have not been answered. If possible, please complete them before continuing to the next page.";
-    var newModalText = "Je hebt niemand geselecteerd, we zouden het fijn vinden als je de vraag toch beantwoord. ";
- 
-    var modalBody = $('.modal-body p').filter(function() {
-      return $.trim($(this).text()) == originalModalText;
-    });
-    if(modalBody.length > 0) {
-      modalBody.text(newModalText);
-    }
-  });
 </script>

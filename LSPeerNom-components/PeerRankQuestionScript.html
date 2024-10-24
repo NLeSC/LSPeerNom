@@ -24,27 +24,29 @@
     .filter( e => e.id.replace("javatbd" + "{SID}X{GID}X{QID}", "") > classmates.length)
     .forEach(e => e.remove());
     
-    // Replace the placeholder labels with classmate names from the token list attribute
+    // Replace the placeholder labels with classmate names from the token list attribute and resize the list containers
     document.querySelectorAll("li.ls-choice").forEach(e => e.textContent=classmates[e.id.replace("javatbd" + "{SID}X{GID}X{QID}", "") - 1]);
+    document.querySelectorAll('ul.sortable-list.list-group').forEach(e => e.style.minHeight = (classmates.length * 40) + 10 + "px"); 
 
+    // Replace default texts
+    // Replace ranking column headers
+    var newChoices = "Jouw klasgenoten"
+    var newRanking = "Jouw vrienden"
+    $('.sortable-subtitle.sortable-rank-subtitle:first').text(newChoices);
+    $('.sortable-subtitle.sortable-rank-subtitle:last').text(newRanking);
+    
+    // Replace mandatory-soft message text and buttons
+    var newModalText = "Je hebt niemand gekozen. Probeer de vraag toch te beantwoorden, ook als je niet zeker weet of je keuzes kloppen. ";
+    var newMoveNextButton = "Ik weet niemand om te kiezen"
+    var newDismissButton = "Vraag toch beantwoorden"
+    $('.modal-body p:first').text(newModalText);
+    $('.modal-body p:not(:first)').remove();
+    $('.modal-footer a[data-movenext="movenext"]').text(newMoveNextButton);
+    $('.modal-footer a[data-dismiss="modal"]').text(newDismissButton);
 
+    // Remove mandatory tips/alerts, which show up after the mandatory-soft message window
+    $('div.ls-question-mandatory').remove();
+    $('div.ls-question-message.ls-em-tip.em_num_answers').remove();
 
   })
-</script>
-
-<script type="text/javascript">
-  // This script changes the original modal question text to a custom modal question text. 
-
-  $(document).on('ready pjax:scriptcomplete',function(){
-
-    var originalModalText = "One or more mandatory questions have not been answered. If possible, please complete them before continuing to the next page.";
-    var newModalText = "Je hebt niemand geselecteerd, we zouden het fijn vinden als je de vraag toch beantwoord. ";
-
-    var modalBody = $('.modal-body p').filter(function() {
-      return $.trim($(this).text()) == originalModalText;
-    });
-    if(modalBody.length > 0) {
-      modalBody.text(newModalText);
-    }
-  });
 </script>
