@@ -1,0 +1,8 @@
+School,Grade,ClassId,Class,Nr,Name,Gender,Age,Stamnr,LongId,Consent,Personal Data,Mentor
+687,1,1,3abc,1,Harold,2,12.79,123451,999990001,,,Mister Something/ Mrs Else
+687,1,1,3abc,2,,9,0,999999,999990002,No,No,Mister Something/ Mrs Else
+687,1,1,3abc,3,Fatima,1,12.92,123453,999990003,,,Mister Something/ Mrs Else
+687,2,2,6abc,1,Charissa,2,12.64,123454,999990004,,No,Mister This/ Mrs That
+687,2,2,6abc,2,Dwayne,1,12.35,123455,999990005,,No,Mister This/ Mrs That
+687,2,2,6abc,3,Abdul,3,12.92,123456,999990006,,,Mister This/ Mrs That
+687,2,2,6abc,4,Derek,1,12.92,123457,999990007,,,Mister This/ Mrs That
