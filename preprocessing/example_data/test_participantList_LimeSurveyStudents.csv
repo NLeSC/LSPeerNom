@@ -2,6 +2,6 @@
 0,1,1,1,Harold,123451,999990001,true,Fatima,nl
 2,1,1,3,Fatima,123453,999990003,true,Harold,nl
 3,2,2,1,Charissa,123454,999990004,false,"Abdul, Derek, Dwayne",nl
-4,2,2,2,Dwayne,123455,999990005,false,"Abdul, Derek, Charissa",nl
-5,2,2,3,Abdul,123456,999990006,true,"Dwayne, Derek, Charissa",nl
+4,2,2,2,Dwayne,123455,999990005,false,"Abdul, Charissa, Derek",nl
+5,2,2,3,Abdul,123456,999990006,true,"Derek, Dwayne, Charissa",nl
 6,2,2,4,Derek,123457,999990007,true,"Dwayne, Abdul, Charissa",nl
