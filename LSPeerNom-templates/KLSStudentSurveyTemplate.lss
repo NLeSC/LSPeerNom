@@ -3142,7 +3142,7 @@
     <sid><![CDATA[843368]]></sid>
     <group_order><![CDATA[2]]></group_order>
     <randomization_group/>
-    <grelevance><![CDATA[TOKEN:ATTRIBUTE_2 == true]]></grelevance>
+    <grelevance><![CDATA[TOKEN:ATTRIBUTE_2 == "true"]]></grelevance>
    </row>
    <row>
     <gid><![CDATA[9944]]></gid>
@@ -3280,12 +3280,14 @@
     <id><![CDATA[9805]]></id>
     <gid><![CDATA[9943]]></gid>
     <group_name><![CDATA[Introductie]]></group_name>
-    <description/>
+    <description><![CDATA[<script>
+  console.log({TOKEN:ATTRIBUTE_2}, typeof {TOKEN:ATTRIBUTE_2})
+</script>]]></description>
     <language><![CDATA[nl]]></language>
     <sid><![CDATA[843368]]></sid>
     <group_order><![CDATA[2]]></group_order>
     <randomization_group/>
-    <grelevance><![CDATA[TOKEN:ATTRIBUTE_2 == true]]></grelevance>
+    <grelevance><![CDATA[TOKEN:ATTRIBUTE_2 == "true"]]></grelevance>
    </row>
    <row>
     <id><![CDATA[9806]]></id>
@@ -17669,9 +17671,9 @@
     <qid><![CDATA[186785]]></qid>
     <question><![CDATA[<audio controls=""><source src="/upload/surveys/843368/files/RosenbergSelfEsteem2021.mp3" type="audio/mpeg" /> Your browser does not support the audio element.</audio>
 
-<p>
-  Nu komen er een aantal vragen over hoe jij denkt en hoe jij je voelt. Lees de vragen goed en selecteer het antwoord dat het meest van toepassing is. </p>]]></question>
-    <help><![CDATA[This is a question help text.]]></help>
+<p>Nu komen er een aantal vragen over hoe jij denkt en hoe jij je voelt. Lees de vragen goed en selecteer het antwoord dat het meest van toepassing is.</p>
+]]></question>
+    <help/>
     <language><![CDATA[nl]]></language>
     <script/>
    </row>
@@ -17750,7 +17752,9 @@
 </div>
 
 <p><br />Als je op "Volgende" klikt ga je akkoord met de uitleg en vind je het goed om aan het onderzoek deel te nemen en dat er gegevens over je welbevinden worden opgeslagen en doorgegeven aan je mentor en het leerlingbegeleidingsteam.<br /><br />Wat belangrijk is om te weten, is dat je klasgenoten jouw antwoorden nooit te zien krijgen.<br /><br />Dankjewel voor je deelname aan dit onderzoek en succes!</p>
-]]></question>
+<script>
+  console.log({TOKEN:ATTRIBUTE_2}, typeof {TOKEN:ATTRIBUTE_2}, {TOKEN:ATTRIBUTE_2 == "true"})
+</script>]]></question>
     <help/>
     <language><![CDATA[nl]]></language>
     <script/>
@@ -25497,7 +25501,7 @@ Soms wordt er wel eens gepest op school. De volgende vragen gaan over wie in jou
    <row>
     <qid><![CDATA[186787]]></qid>
     <attribute><![CDATA[max_subquestions]]></attribute>
-    <value/>
+    <value><![CDATA[40]]></value>
     <language/>
    </row>
    <row>
@@ -39069,7 +39073,7 @@ Soms wordt er wel eens gepest op school. De volgende vragen gaan over wie in jou
     <sid><![CDATA[843368]]></sid>
     <gsid><![CDATA[1]]></gsid>
     <admin><![CDATA[inherit]]></admin>
-    <expires><![CDATA[2024-11-03 23:59:00]]></expires>
+    <expires><![CDATA[2024-11-28 17:38:00]]></expires>
     <adminemail><![CDATA[inherit]]></adminemail>
     <anonymized><![CDATA[N]]></anonymized>
     <faxto/>
@@ -39086,7 +39090,7 @@ Soms wordt er wel eens gepest op school. De volgende vragen gaan over wie in jou
     <autoredirect><![CDATA[I]]></autoredirect>
     <allowprev><![CDATA[Y]]></allowprev>
     <printanswers><![CDATA[I]]></printanswers>
-    <ipaddr><![CDATA[N]]></ipaddr>
+    <ipaddr><![CDATA[Y]]></ipaddr>
     <refurl><![CDATA[N]]></refurl>
     <showsurveypolicynotice><![CDATA[0]]></showsurveypolicynotice>
     <publicstatistics><![CDATA[I]]></publicstatistics>
@@ -39094,7 +39098,7 @@ Soms wordt er wel eens gepest op school. De volgende vragen gaan over wie in jou
     <listpublic><![CDATA[I]]></listpublic>
     <htmlemail><![CDATA[I]]></htmlemail>
     <sendconfirmation><![CDATA[I]]></sendconfirmation>
-    <tokenanswerspersistence><![CDATA[I]]></tokenanswerspersistence>
+    <tokenanswerspersistence><![CDATA[Y]]></tokenanswerspersistence>
     <assessments><![CDATA[I]]></assessments>
     <usecaptcha><![CDATA[E]]></usecaptcha>
     <usetokens><![CDATA[N]]></usetokens>
